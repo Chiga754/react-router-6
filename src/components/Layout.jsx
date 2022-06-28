@@ -1,14 +1,29 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const Layout = () => {
     return (
         <div>
+            {/* По умолчанию устанавливается класс active */}
+            {/* <header>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/blog">Blog</NavLink>
+                <NavLink to="/about">About</NavLink>
+            </header> */}
+            
+            {/* Для использования кастомного класса делаем так */}
             <header>
-                <Link to="/">Home</Link>
-                <Link to="/blog">Blog</Link>
-                <Link to="/about">About</Link>
+                <NavLink to="/" className={({isActive}) => isActive ? 'active-link' : ''}>Home</NavLink>
+                <NavLink to="/blog" className={({isActive}) => isActive ? 'active-link' : ''}>Blog</NavLink>
+                <NavLink to="/about" className={({isActive}) => isActive ? 'active-link' : ''}>About</NavLink>
             </header>
 
+
+             {/* Если необходимо использовать style */}
+            {/* <header>
+                <NavLink to="/" style={({isActive}) => ({color: isActive ? 'red' : 'white'})}>Home</NavLink>
+                <NavLink to="/blog" style={({isActive}) => ({color: isActive ? 'red' : 'white'})}>Blog</NavLink>
+                <NavLink to="/about" style={({isActive}) => ({color: isActive ? 'red' : 'white'})}>About</NavLink>
+            </header> */}
             <Outlet/>
 
             <footer>
