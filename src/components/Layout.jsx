@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import CustomLink from './CustomLink';
 
 const Layout = () => {
     return (
@@ -11,11 +12,11 @@ const Layout = () => {
             </header> */}
             
             {/* Для использования кастомного класса делаем так */}
-            <header>
+            {/* <header>
                 <NavLink to="/" className={({isActive}) => isActive ? 'active-link' : ''}>Home</NavLink>
                 <NavLink to="/blog" className={({isActive}) => isActive ? 'active-link' : ''}>Blog</NavLink>
                 <NavLink to="/about" className={({isActive}) => isActive ? 'active-link' : ''}>About</NavLink>
-            </header>
+            </header> */}
 
 
              {/* Если необходимо использовать style */}
@@ -24,6 +25,14 @@ const Layout = () => {
                 <NavLink to="/blog" style={({isActive}) => ({color: isActive ? 'red' : 'white'})}>Blog</NavLink>
                 <NavLink to="/about" style={({isActive}) => ({color: isActive ? 'red' : 'white'})}>About</NavLink>
             </header> */}
+
+            {/* Использование хука useMatch в компоненьте CustomLink, для более тонкой настройки */}
+            <header>
+                <CustomLink to="/">Home</CustomLink>
+                <CustomLink to="/blog">Blog</CustomLink>
+                <CustomLink to="/about">About</CustomLink>
+            </header>
+
             <Outlet/>
 
             <footer>
