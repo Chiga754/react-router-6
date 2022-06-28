@@ -1,9 +1,23 @@
+import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 const Blogpage = () => {
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(res => res.json())
+        .then(data => setPosts(data));
+    }, []);
     return (
         <div>
             <h1>Blog</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis culpa deleniti hic officia iste eum, sunt assumenda iusto. Ipsam sint tempore vel, distinctio id quae. Ab voluptatum optio eos quam.</p>
+            {
+                posts.map(post => (
+                    <Link key={post.id} to={`/blog/${post.id}`}>
+                        <li>{post.title}</li>
+                    </Link>
+                ))
+            }
         </div>
     );
 }

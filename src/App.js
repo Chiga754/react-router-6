@@ -3,6 +3,8 @@ import Homepage from "./pages/Homepage";
 import Aboutpage from "./pages/Aboutpage";
 import Blogpage from "./pages/Blogpage";
 import Notfoudpages from "./pages/Notfoudpages";
+import SinglePage from './pages/SinglePage';
+
 import Layout from './components/Layout';
 
 import { Routes, Route } from 'react-router-dom';
@@ -14,6 +16,7 @@ function App() {
         <Route path='/' element={<Layout/>}>
           <Route index element={<Homepage/>}/>
           <Route path='blog' element={<Blogpage/>}/>
+          <Route path='blog/:id' element={<SinglePage/>}/>
           <Route path='about' element={<Aboutpage/>}/>
           <Route path='*' element={<Notfoudpages/>}/>
         </Route>
